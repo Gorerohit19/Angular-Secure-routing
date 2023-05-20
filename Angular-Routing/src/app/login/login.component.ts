@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from '../user';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,20 +8,20 @@ import { User } from '../user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  user : User ={
-    email : '',
-    password : '',
-    role : ''
-  };
-  status : boolean | undefined;
 
-  constructor(){}
+  email:string|any;
+  password:string|any;
+  role:string|any;
+  loggedIn:any;
+
+  constructor(private svc : AuthService){}
 
   onLogin(form:any){
     console.log(form);
-    if(this.user.email=='rohit.g@gmail.com' && this.user.password=='rohit@123' && this.user.role=='Admin'){
-      alert("Login Successfull ");
-      this.status = true;
+    if(this.svc.logIn(this.email,this.password,this.role)){
+      alert("Login Successfull");
+      this.loggedIn=true;
+      
     }
     else{
       alert("Login Failed");
