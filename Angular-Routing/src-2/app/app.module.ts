@@ -14,18 +14,12 @@ import { CustomerlistComponent } from './customer/customerlist/customerlist.comp
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 const routes:Routes=[
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {
-    path: 'routing', 
-    component : RoutingComponent,
-    children: [
-      {path: '', redirectTo: 'routing', pathMatch: 'full'},
-      {path: 'customer', component: CustomerlistComponent},
-      {path: 'product', component: ProductComponent},
-      {path : 'aboutus', component: AboutUsComponent},
-      {path: 'home', component: HomeComponent}
-    ]},
+  {path: 'routing', component : RoutingComponent},
+  {path: 'customer', component: CustomerlistComponent},
+  {path: 'product', component: ProductComponent},
+  {path : 'aboutus', component: AboutUsComponent},
+  {path: 'home', component: HomeComponent}
 ];
 
 @NgModule({

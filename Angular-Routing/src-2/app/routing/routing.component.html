@@ -1,0 +1,9 @@
+
+<h1>Home</h1>
+<div>
+    <a *ngIf="statusAdmin" [routerLink]="['customer']">Customer</a> |
+    <a *ngIf="statusAdmin" [routerLink]="['home']">Home</a> |
+    <a *ngIf="statusCustomer" [routerLink]="['product']">Product</a> |
+    <a *ngIf="statusCustomer" [routerLink]="['aboutus']">AboutUs</a>
+<router-outlet></router-outlet>
+</div>
