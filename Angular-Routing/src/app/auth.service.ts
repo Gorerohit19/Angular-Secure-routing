@@ -1,49 +1,18 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { User } from './user';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  users : User []=[
-    {
-      'email':'Pragati.B@gmail.com',
-      'password':'password',
-      'role':'Admin'
-    },
-    {
-      'email':'Rushikesh.C@gmail.com',
-      'password':'password',
-      'role':'Customer'
-    },
-    {
-      'email':'Akash.A@gmail.com',
-      'password':'password',
-      'role':'Employee'
-    },
-    {
-      'email':'Akashay.T@gmail.com',
-      'password':'password',
-      'role':'Employee'
-    },
-    {
-      'email':'Rohit.G@gmail.com',
-      'password':'password',
-      'role':'Customer'
-    },
-  ]
-  isLogin = false;
-  loggedIn:any;
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
-  logIn(email:string,password:string,role:string):boolean{
-    const user=this.users.find((u)=>u.email ===email && u.password===password)
-    if(user){
-      this.loggedIn=user;
-      localStorage.setItem("role",user.role)
-      return true;
-    }
-    return false;
-  }
+  logIn(user:User):Observable<any>{
+    console.log("Inside Request");
+    let url ="http://localhost:5291/api/auth/authenticate/";
+    return this.http.post<User>(url,user);
+  };
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../user';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,23 +10,21 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent {
 
-  email:string|any;
-  password:string|any;
-  role:string|any;
+  user:User = {
+  email:'',
+  password:''
+  };
+
   loggedIn:any;
+  role:any;
 
-  constructor(private svc : AuthService){}
+  constructor(private svc : AuthService, private router : Router){}
 
-  onLogin(form:any){
-    console.log(form);
-    if(this.svc.logIn(this.email,this.password,this.role)){
-      alert("Login Successfull");
-      this.loggedIn=true;
-      
-    }
-    else{
-      alert("Login Failed");
-    }
+  onLogin(){
+    this.svc.logIn(this.user).subscribe((response)=>{
+      console.log(response.token);
+      console.log(response);
+    })
   }
 
 }

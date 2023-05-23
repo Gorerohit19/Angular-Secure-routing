@@ -11,7 +11,6 @@ import { RoutingComponent } from './routing/routing.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CustomerlistComponent } from './customer/customerlist/customerlist.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 const routes:Routes=[
   {path: 'login', component: LoginComponent},
@@ -19,7 +18,7 @@ const routes:Routes=[
   {path: 'customer', component: CustomerlistComponent},
   {path: 'product', component: ProductComponent},
   {path : 'aboutus', component: AboutUsComponent},
-  {path: 'home', component: HomeComponent}
+  {path: 'home' , component: HomeComponent}
 ];
 
 @NgModule({
@@ -35,8 +34,7 @@ const routes:Routes=[
     BrowserModule,
     FormsModule,
     CustomerModule,
-    RouterModule.forRoot(routes),
-    HttpClientModule
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
