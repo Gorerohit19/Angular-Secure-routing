@@ -17,6 +17,7 @@ export class LoginComponent {
 
   loggedIn:any;
   role:any;
+  status : boolean | undefined;
 
   constructor(private svc : AuthService, private router : Router){}
 
@@ -24,6 +25,10 @@ export class LoginComponent {
     this.svc.logIn(this.user).subscribe((response)=>{
       console.log(response.token);
       console.log(response);
+      if(response){
+        alert("Login is Successfull & you get token");
+        this.status = true;
+      }
     })
   }
 
