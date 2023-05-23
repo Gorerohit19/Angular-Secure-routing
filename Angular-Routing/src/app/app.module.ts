@@ -13,17 +13,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { CustomerlistComponent } from './customer/customerlist/customerlist.component';
 
 const routes:Routes=[
-  // {path:'', redirectTo:'/login', pathMatch:'full'},
-  {path:'login',component : LoginComponent},
-  {path:'routing', component:RoutingComponent ,
-  children: [
-    {path:'customer', component: CustomerlistComponent},
-    {path:'product', component: ProductComponent},
-    {path:'aboutus', component: AboutUsComponent},
-    {path:'home', component: HomeComponent},
-  ]}
-
-]
+  {path: 'login', component: LoginComponent},
+  {path: 'routing', component : RoutingComponent},
+  {path: 'customer', component: CustomerlistComponent},
+  {path: 'product', component: ProductComponent},
+  {path : 'aboutus', component: AboutUsComponent},
+  {path: 'home' , component: HomeComponent}
+];
 
 @NgModule({
   declarations: [
