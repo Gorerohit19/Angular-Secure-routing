@@ -25,6 +25,7 @@ export class LoginComponent {
     this.svc.logIn(this.user).subscribe((response)=>{
       console.log(response.token);
       localStorage.setItem("jwt",response.token);
+      console.log(response);
       if(response){
         alert("Login is Successfull & you get token");
       };
