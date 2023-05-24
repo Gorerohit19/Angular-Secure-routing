@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
     this.btnSignIn = true;
     this.svc.logIn(this.user).subscribe((response)=>{
       localStorage.setItem("jwtToken",response.token);
+      this.btnSignIn = false;
       this.loggedIn = true;
       this.loginFormVisible = false;
       if(this.user){
