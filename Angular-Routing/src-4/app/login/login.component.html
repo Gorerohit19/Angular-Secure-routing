@@ -1,0 +1,39 @@
+<!-- <h1>Login Page</h1>
+<br> -->
+
+<button (click)="login()" *ngIf="btnSignIn">SignIn</button>
+<button (click)="logout()" *ngIf="btnSignOut">SignOut</button>
+<div *ngIf="loginFormVisible">
+  <form (ngSubmit)="onLogin()">
+    <table>
+      <tr>
+        <td>
+          <label for="email">Email :</label>
+        </td>
+        <td>
+          <input type="text" id="email" name="email" [(ngModel)]="user.email" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="password">Password :</label>
+        </td>
+        <td>
+          <input type="password" id="password" name="password" [(ngModel)]="user.password" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+          <button type="submit">Login</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+  <hr/>
+  <div *ngIf="validUser">
+    <app-routing></app-routing>
+  </div>
+

@@ -44,9 +44,4 @@ export class AuthService {
     const decodedToken : any = this.jwtHelper.decodeToken(token);
     return decodedToken.id;
   }
-
-  getEmpById(empId:number):Observable<any>{
-    let url = ""+ empId;
-    return this.http.get<any>(url);
-  }
 }

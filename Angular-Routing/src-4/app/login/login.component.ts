@@ -42,6 +42,18 @@ export class LoginComponent implements OnInit {
       const role = this.svc.getRoleFromToken();
       console.log("Role from Token");
       console.log(role);
+      // if(role == "Admin"){
+      //   const id = this.svc.getAdminFromToken();
+      //   console.log(id);
+      // };
+      // if(role == "Customer"){
+      //   const id = this.svc.getCustomerFromToken();
+      //   console.log(id);
+      // };
+      // if(role == "Employee"){
+      //   const id = this.svc.getEmployeeFromToken();
+      //   console.log(id);
+      // };
     });
     this.router.navigate(['/routing']);
   };
