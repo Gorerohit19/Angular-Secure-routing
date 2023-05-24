@@ -16,10 +16,13 @@ export class RoutingComponent implements OnInit {
 
   constructor(private svc : AuthService){}
 
-  ngOnInit(): Promise<any> {
+  async ngOnInit(): Promise<any> {
     console.log("on Init");
     console.log(this.empId);
     this.id = parseInt(this.empId);
-    this.svc.getEmpById(this.id).subscribe(respon)
-  }
+    this.svc.getEmpById(this.id).subscribe((response) => {
+      this.fistName = response.employeeFirstName;
+      this.lastName = response.employeeLastname;
+    });
+  };
 }

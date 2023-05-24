@@ -46,7 +46,7 @@ export class AuthService {
   }
 
   getEmpById(empId:number):Observable<any>{
-    let url = ""+ empId;
+    let url = "http://localhost:5189/api/employees/getemployeedetails/"+ empId;
     return this.http.get<any>(url);
   }
 }
