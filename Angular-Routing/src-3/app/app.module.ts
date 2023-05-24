@@ -12,16 +12,20 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CustomerlistComponent } from './customer/customerlist/customerlist.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
 const routes:Routes=[
-  // {path: '', redirectTo:'/login', pathMatch:'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  // {path: 'routing', component : RoutingComponent},
-  {path: 'customer', component: CustomerlistComponent},
-  {path: 'product', component: ProductComponent},
-  {path : 'aboutus', component: AboutUsComponent},
-  {path: 'home', component: HomeComponent}
+  {
+    path: 'routing', 
+    component : RoutingComponent,
+    children: [
+      {path: '', redirectTo: 'routing', pathMatch: 'full'},
+      {path: 'customer', component: CustomerlistComponent},
+      {path: 'product', component: ProductComponent},
+      {path : 'aboutus', component: AboutUsComponent},
+      {path: 'home', component: HomeComponent}
+    ]},
 ];
 
 @NgModule({
@@ -40,7 +44,7 @@ const routes:Routes=[
     RouterModule.forRoot(routes),
     HttpClientModule
   ],
-  providers: [JwtHelperService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS}],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
