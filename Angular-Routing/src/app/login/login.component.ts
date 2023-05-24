@@ -32,16 +32,11 @@ export class LoginComponent implements OnInit {
   onLogin(){
     this.btnSignIn = true;
     this.svc.logIn(this.user).subscribe((response)=>{
-      localStorage.setItem("jwtToken",response.token);
-      this.btnSignIn = false;
-      this.loggedIn = true;
-      this.loginFormVisible = false;
+      localStorage.setItem('jwtToken', response.token);
+      localStorage.setItem('employeeId', response.userId)
       if(this.user){
         this.validUser = true;
       }
-      const role = this.svc.getRoleFromToken();
-      console.log("Role from Token");
-      console.log(role);
     });
     this.router.navigate(['/routing']);
   };

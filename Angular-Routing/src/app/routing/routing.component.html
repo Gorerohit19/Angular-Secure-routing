@@ -1,10 +1,10 @@
 
-<h1>Welcome {{ fistName }} {{ lastName }}</h1>
+<h1>Welcome {{ empFistName }} {{ empLastName }}</h1>
 <div>
     <!-- <a  [routerLink]="['/routing']">Routing</a> | -->
-    <a *ngIf="statusAdmin" [routerLink]="['/customer']">Customer</a> |
-    <a *ngIf="statusAdmin" [routerLink]="['/home']">Home</a> |
-    <a *ngIf="statusCustomer" [routerLink]="['/product']">Product</a> |
-    <a *ngIf="statusCustomer" [routerLink]="['/aboutus']">AboutUs</a>
+    <a  [routerLink]="['/customer']">Customer</a> |
+    <a  [routerLink]="['/home']">Home</a> |
+    <a  [routerLink]="['/product']">Product</a> |
+    <a  [routerLink]="['/aboutus']">AboutUs</a>
 <router-outlet></router-outlet>
 </div>

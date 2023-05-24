@@ -17,34 +17,6 @@ export class AuthService {
     return this.http.post<User>(url,user);
   };
 
-  getRoleFromToken(): string {
-    const token = localStorage.getItem('jwtToken');
-    if(token){
-      const decodedToken : any = this.jwtHelper.decodeToken(token);
-      const role = localStorage.setItem('Roles', decodedToken.Roles)
-      return decodedToken.Roles;
-    }
-    return '';
-  };
-
-  getAdminFromToken(): number {
-    const token : any = localStorage.getItem('jwtToken');
-    const decodedToken : any = this.jwtHelper.decodeToken(token);
-    return decodedToken.id;
-  }
-
-  getCustomerFromToken(): number {
-    const token : any = localStorage.getItem('jwtToken');
-    const decodedToken : any = this.jwtHelper.decodeToken(token);
-    return decodedToken.id;
-  }
-
-  getEmployeeFromToken(): number {
-    const token : any = localStorage.getItem('jwtToken');
-    const decodedToken : any = this.jwtHelper.decodeToken(token);
-    return decodedToken.id;
-  }
-
   getEmpById(empId:number):Observable<any>{
     let url = "http://localhost:5189/api/employees/getemployeedetails/"+ empId;
     return this.http.get<any>(url);

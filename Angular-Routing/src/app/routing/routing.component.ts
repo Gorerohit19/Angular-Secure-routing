@@ -8,10 +8,10 @@ import { AuthService } from '../auth.service';
 })
 export class RoutingComponent implements OnInit {
   
-  fistName : string | any;
-  lastName : string | any;
+  empFistName : string | any;
+  empLastName : string | any;
   id : number | any;
-  empId = localStorage.getItem('empId') || '{}';
+  empId = localStorage.getItem('employeeId') || '{}';
   status : boolean = false;
 
   constructor(private svc : AuthService){}
@@ -21,8 +21,8 @@ export class RoutingComponent implements OnInit {
     console.log(this.empId);
     this.id = parseInt(this.empId);
     this.svc.getEmpById(this.id).subscribe((response) => {
-      this.fistName = response.employeeFirstName;
-      this.lastName = response.employeeLastname;
+      this.empFistName = response.empFirstName;
+      this.empLastName = response.empLastName;
     });
   };
 }
