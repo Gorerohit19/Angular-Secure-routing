@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-routing',
@@ -7,20 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoutingComponent implements OnInit {
   
-  role = localStorage.getItem('Roles');
-  statusAdmin : Boolean = false;
-  statusCustomer : Boolean = false;
+  fistName : string | any;
+  lastName : string | any;
+  id : number | any;
+  empId = localStorage.getItem('empId') || '{}';
+  status : boolean = false;
 
-  ngOnInit(): void {
-    
-    if(this.role == "Admin"){
-      this.statusAdmin=true;
-      console.log(this.statusAdmin);
-    }
+  constructor(private svc : AuthService){}
 
-    if(this.role == "Customer"){
-      this.statusCustomer=true;
-      console.log(this.statusCustomer);
-    }
+  ngOnInit(): Promise<any> {
+    console.log("on Init");
+    console.log(this.empId);
+    this.id = parseInt(this.empId);
+    this.svc.getEmpById(this.id).subscribe(respon)
   }
 }
